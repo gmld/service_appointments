@@ -54,6 +54,8 @@ app.post(endpoint, function (req, res) {
 });
 
 
+
+
 app.get('/', function (req, res) {
     return res.status(200).send({
         "service_name":"appointments",
