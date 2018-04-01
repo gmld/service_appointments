@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const app = express()
 const mongo_client = require('mongodb').MongoClient;
-const mongo_url = "mongodb://localhost:27017/appointmets";
+const mongo_url = "mongodb://mongo:27017/appointmets";
 const collection = "appointments";
 const endpoint = "/appointments";
 
@@ -16,7 +16,6 @@ app.get(endpoint, function (req, res) {
             if (err) throw err;
             db.db(collection).collection(collection).find({ "username": req.headers['x-consumer-username'] }).toArray(function (err, result) {
                 if (err) throw err;
-
                 db.close();
                 if (result.length != 0) {
                     res.status(200).json(result);
@@ -33,7 +32,6 @@ app.get(endpoint, function (req, res) {
 
 app.post(endpoint, function (req, res) {
     var myobj = req.body;
-    console.log(myobj)
     var status = true;
     try {
         mongo_client.connect(mongo_url, function (err, db) {
