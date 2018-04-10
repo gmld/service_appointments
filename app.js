@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const app = express()
 const mongo_client = require('mongodb').MongoClient;
-const mongo_url = "mongodb://mongo:27017/appointmets";
+const mongo_url = "mongodb://mongo:27017/appointments";
 const collection = "appointments";
 const endpoint = "/appointments";
 
@@ -64,4 +64,4 @@ app.get('/', function (req, res) {
 });
 
 
-app.listen(3000, () => console.log('Service Appointments listening on port 3000!'))
+app.listen(3001, () => console.log('Service Appointments listening on port 3001!'))
